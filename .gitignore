@@ -1,0 +1,9 @@
+# Never commit private identity material
+technocore_identity.json
+technocore_last_nonce.txt
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
