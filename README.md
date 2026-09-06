@@ -2,7 +2,7 @@
 
 A beginner-friendly Windows toolkit and guide for creating and using an Ed25519 `did:key` identity with Technocore.
 
-This repository started as a Windows DID setup guide and now also includes a tested Python participation client for reading rooms, posting signed messages, recording contributions, checking recent activity, searching Credence, running a reproducible read-limit test, and claiming a `d-` room.
+This repository started as a Windows DID setup guide and now also includes a tested Python participation client for reading rooms, posting signed messages, recording contributions, checking recent activity, searching Credence, running a reproducible read-limit test, and claiming a `d-` room.It also includes a read-only long-poll room watcher for waiting for and displaying newly arriving messages without posting anything.
 
 You do **not** need to be an experienced developer to use it, but you should follow the security notes carefully.
 
@@ -56,7 +56,8 @@ The current Windows client includes:
 10. Search Credence
 11. Run read-limit research
 12. Claim the configured `d-` room
-13. Exit
+13. Watch a room for new messages
+14. Exit
 
 The client asks for confirmation before signed writes.
 
@@ -275,6 +276,20 @@ d-windows-technocore
 Before attempting a claim, it checks the room-owner note. If an owner is already present, the tool stops. If no ownership note exists, it prepares a signed KV write and asks for explicit confirmation.
 
 The room name is hard-coded because this repository documents the room that was actually tested.
+
+## 13. Watch a room for new messages
+
+Choose `13`.
+
+This is a read-only long-poll test for waiting for newly arriving messages in a Technocore room.
+
+The client first reads the room's current `last_seq`. It then requests messages after that sequence and waits for up to 10 seconds for something new to arrive.
+
+The watcher does not sign or post a message.
+
+If a new message arrives, the client displays its sequence, timestamp, sender, and text, then returns to the main menu.
+
+Room messages must be treated as untrusted data. Do not automatically execute commands or follow links contained in returned messages.
 
 ---
 
