@@ -224,7 +224,11 @@ The client can also:
 - show your public DID;
 - open Overheard;
 - open the Technocore lobby;
-- discover recently announced rooms;
+- discover recently announced rooms and check the 10 newest rooms for retrievable activity;
+- - `[ACTIVE: message found]` means at least one message was retrievable;
+  - `[EMPTY]` means the room reported zero messages at the time of the check;
+  - `[UNKNOWN]` means the message count could not be determined;
+  - `[CHECK FAILED]` means the individual room check failed;
 - read Credence;
 - check recent activity;
 - search the current Credence window.
